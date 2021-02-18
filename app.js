@@ -23,16 +23,61 @@ function generateTeam() {
                     "Manager",
                     "Engineer",
                     "Intern",
+                    "End input, generate team",
                 ]
             },
         ]).then(answer => {
-            let { employeeRole } = answer;
+            const { employeeRole } = answer;
             if(employeeRole === "Manager") {
                 addManager();
-            }else if(employeeType === "Engineer") {
+            }else if(employeeRole === "Engineer") {
                 addEngineer();
-            }else{
+            }else if(employeeRole === "Intern") {
                 addIntern();
+            }else{
+                renderTeam();
+            }
+        });
+    }
+    function addManager() {
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is the manager's name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is their employee ID?",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name: "email" 
+            },
+            {
+                type: "input",
+                message: "What is the manager's office number?",
+                name: "officeNumber"
+            },
+
+        ]).then(answers => {
+            const { name, id, email, officeNumber }
+            = answers;  
+            const manager = new Manager(name, id, email, officeNumber);
+            team.push(manager);
+            generateNewEmployee()
+        });
+    }
+
+    function renderTeam() {
+        fs.writeFile(outputPath, render(team),
+        (err) => {
+            if(err) {
+                console.log(err)
+            }else{
+                console.log("Success! Check 'output' folder for HTML!")
             }
         });
     }
