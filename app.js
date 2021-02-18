@@ -10,20 +10,31 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+let team = [];
+
 function generateTeam() {
     function generateNewEmployee() {
         inquirer.prompt([
             {
                 type: "list",
                 message: "What role would you like to input?",
-                name: "EmployeeRole",
+                name: "employeeRole",
                 choices: [
                     "Manager",
                     "Engineer",
                     "Intern",
                 ]
+            },
+        ]).then(answer => {
+            let { employeeRole } = answer;
+            if(employeeRole === "Manager") {
+                addManager();
+            }else if(employeeType === "Engineer") {
+                addEngineer();
+            }else{
+                addIntern();
             }
-        ])
+        });
     }
     generateNewEmployee()
 }
