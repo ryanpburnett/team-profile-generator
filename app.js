@@ -14,7 +14,7 @@ function generateTeam() {
     function generateNewEmployee() {
         inquirer.prompt([
             {
-                type: "input",
+                type: "list",
                 message: "What role would you like to input?",
                 name: "EmployeeRole",
                 choices: [
