@@ -71,6 +71,70 @@ function generateTeam() {
         });
     }
 
+    function addEngineer() {
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is the engineer's name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is their employee ID?",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name: "email" 
+            },
+            {
+                type: "input",
+                message: "What is the engineers github?",
+                name: "github"
+            },
+
+        ]).then(answers => {
+            const { name, id, email, github }
+            = answers;  
+            const engineer = new Engineer(name, id, email, github);
+            team.push(engineer);
+            generateNewEmployee()
+        });
+    }
+
+    function addIntern() {
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is the interns's name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is their employee ID?",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name: "email" 
+            },
+            {
+                type: "input",
+                message: "What is the interns's school?",
+                name: "school"
+            },
+
+        ]).then(answers => {
+            const { name, id, email, school }
+            = answers;  
+            const intern = new Intern(name, id, email, school);
+            team.push(intern);
+            generateNewEmployee()
+        });
+    }
+
     function renderTeam() {
         fs.writeFile(outputPath, render(team),
         (err) => {
