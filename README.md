@@ -8,6 +8,8 @@
 
 [Usage](#usage)
 
+[Walkthrough](#walkthrough)
+
 [Dependencies](#dependencies)
 
 [Contributing](#contributing)
@@ -26,6 +28,11 @@ N/A
 
 ### Usage
 Follow the command line prompt, and you are ready to go!  The generated file will be found in the output folder.  
+
+### Walkthrough
+
+Here is a video showing this CLI project in operation:
+https://www.youtube.com/watch?v=tbJH6sEgt1Q
 
 ### Dependencies
 Inquirer, and Jest as a dev dependency
