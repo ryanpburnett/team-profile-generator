@@ -2,6 +2,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
+const validator = require("email-validator");
 const path = require("path");
 const fs = require("fs");
 
@@ -54,17 +55,17 @@ function generateTeam() {
             {
                 type: "input",
                 message: "What is their email?",
-                name: "email" 
+                name: "email",
             },
             {
                 type: "input",
                 message: "What is the manager's office number?",
-                name: "officeNumber"
+                name: "officeNumber",
             },
 
         ]).then(answers => {
             const { name, id, email, officeNumber }
-            = answers;  
+            = answers;
             const manager = new Manager(name, id, email, officeNumber);
             team.push(manager);
             generateNewEmployee()
